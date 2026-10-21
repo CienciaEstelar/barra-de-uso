@@ -102,7 +102,7 @@ Implementado completo en un borrador antes de escribir el plan:
 - **Payloads reales**: `Sonnet 5.5 · ctx 11% · 5h 25% ▼ ↻ 05:20 · sem 18% = ↻ mar 04:00`; con colores, la línea parte con `\x1b[0m`.
 - **Tiempo**: 0,09 a 0,10 s por refresco, igual que v1.
 
-**No validado todavía**: cómo se ven los colores y el tenue dentro de Claude Code. Eso se confirma en vivo al final del plan.
+**Validado en vivo** (2026-10-21, Claude Code 2.1.306): Juan confirmó que los colores se ven bien en su terminal.
 
 ## 8. Riesgos conocidos
 
