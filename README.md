@@ -2,12 +2,12 @@
 
 # 📊 barra-de-uso
 
-**Status line para Claude Code que dice la verdad: cuánto plan te queda y cuántos tokens gastó cada modelo.**
+**Status line para Claude Code que dice la verdad: cuánto plan te queda, a qué ritmo lo gastas y cuántos tokens usó cada modelo.**
 
 ![Python](https://img.shields.io/badge/Python-3.12%2B-blue?style=for-the-badge&logo=python&logoColor=white)
 ![Dependencias](https://img.shields.io/badge/Dependencias-0-success?style=for-the-badge)
 ![Red](https://img.shields.io/badge/Red-ninguna-success?style=for-the-badge)
-![Tests](https://img.shields.io/badge/Tests-65%20passing-brightgreen?style=for-the-badge)
+![Tests](https://img.shields.io/badge/Tests-108%20passing-brightgreen?style=for-the-badge)
 ![Licencia](https://img.shields.io/badge/Licencia-MIT-green?style=for-the-badge)
 
 <img src="docs/assets/barra-de-uso.svg" alt="La barra en modo plan y en modo otro proveedor" width="760">
@@ -22,7 +22,7 @@ Si usas Claude Code con más de un proveedor (el plan de Anthropic más DeepSeek
 
 | Modo | Cómo lo detecta | Qué muestra |
 |---|---|---|
-| 🟢 **Plan** (`claude` con tu login) | `ANTHROPIC_BASE_URL` sin definir o apuntando a `api.anthropic.com` | Uso de la ventana de **5 h** y de la **semanal**, con la hora de reset en **hora de Chile** |
+| 🟢 **Plan** (`claude` con tu login) | `ANTHROPIC_BASE_URL` sin definir o apuntando a `api.anthropic.com` | **Contexto** usado, uso de la ventana de **5 h** y de la **semanal** con su **ritmo**, y la hora de reset en **hora de Chile** |
 | 🔵 **Otro proveedor** (`ds_mode`, `kimi_mode`, `multi_mode`...) | Cualquier otro host | Una fila **por modelo** (principal y subagentes) con tokens de entrada, lectura de caché, escritura de caché y salida |
 
 Los tokens vienen separados a propósito: casi todos los proveedores cobran la **lectura de caché** mucho más barata que la entrada normal. Si los sumaras en un solo número, el costo te saldría inflado. Con las cuatro columnas multiplicas cada una por la tarifa de tu proveedor y listo.
@@ -32,6 +32,19 @@ costo = in × P_entrada + cr × P_lectura_caché + cw × P_escritura_caché + ou
 ```
 
 > 💡 La barra **no calcula el costo por ti**, a propósito. Las tarifas cambian y varían por proveedor; los tokens, no.
+
+### 🧭 Cómo leer el modo plan
+
+| Símbolo | Significa |
+|---|---|
+| `42%` en verde, amarillo o rojo | Nivel de uso: bajo 50 %, desde 50 %, desde 80 % |
+| `▲` rojo | Gastas más rápido que el tiempo: con este ritmo no llegas al reset |
+| `▼` verde | Vas holgado |
+| `=` | Vas al ritmo (dentro de 5 puntos del tiempo transcurrido) |
+| `~42%` tenue | Sesión recién abierta: último dato conocido, mientras llega el real |
+| `ctx 11%` | Cuánto de la ventana de contexto de la sesión está ocupado |
+
+El ritmo compara el % usado con el % de la ventana que ya pasó. Ejemplo: 42 % usado cuando solo ha pasado el 10 % de las 5 h es `▲`.
 
 ---
 
@@ -58,7 +71,7 @@ git clone https://github.com/CienciaEstelar/barra-de-uso.git
 
 **3. Abre una sesión nueva**
 
-Las sesiones que ya estaban abiertas no toman el cambio. Además, Claude Code recién entrega el uso del plan después de la primera respuesta, así que antes verás `5h -- · sem --`. Es normal.
+Las sesiones que ya estaban abiertas no toman el cambio. Claude Code recién entrega el uso del plan después de la primera respuesta; mientras tanto la barra muestra el último dato conocido con `~`, o `5h -- · sem --` si nunca lo ha visto.
 
 ---
 
@@ -75,7 +88,9 @@ flowchart LR
     E --> H["Una fila por modelo"]
 ```
 
-- **Modo plan:** no calcula nada. Lee `rate_limits` del JSON que Claude Code ya le entrega y convierte `resets_at` a `America/Santiago`.
+- **Modo plan:** lee `rate_limits` y `context_window` del JSON que Claude Code ya le entrega, convierte `resets_at` a `America/Santiago` y calcula el ritmo con la duración de cada ventana (5 h y 7 días).
+- **Último dato conocido:** cada vez que llega `rate_limits` lo guarda en `~/.cache/barra-de-uso/ultimo-plan.json`. Al abrir una sesión nueva, mientras Claude Code aún no lo entrega, muestra ese valor en tenue con `~`. Si su reset ya pasó, no lo usa.
+- **Colores:** códigos ANSI básicos. Cada línea parte con un reinicio porque Claude Code atenúa el status line. `NO_COLOR=1` los apaga.
 - **Modo otro proveedor:** lee el transcript de la sesión y los de sus subagentes (`<sesión>/subagents/**/agent-*.jsonl`), **deduplica por `message.id`** (cada respuesta aparece repetida varias veces en el archivo) y suma por modelo.
 - **Caché incremental:** guarda hasta qué byte leyó de cada archivo en `~/.cache/barra-de-uso/<session_id>.json`. Cada refresco procesa solo lo nuevo, así que la barra no se vuelve lenta aunque la sesión pese cientos de MB.
 
@@ -89,9 +104,9 @@ flowchart LR
 | Reset semanal | Capturas reales convertidas a hora de Chile | Martes 04:00, como corresponde |
 | Totales de tokens | Contra un cálculo independiente con `jq` sobre una sesión real de `ds_mode` con 39 subagentes | **Idénticos** |
 | Velocidad | Medida sobre transcripts reales | ~0,1 s por refresco con caché; la primera lectura de una sesión de 127 MB tarda 1,4 s, una sola vez |
-| Código | `pytest` | 65 tests pasando |
+| Código | `pytest` | 108 tests pasando |
 
-⚠️ **Honestidad:** el payload se validó en la 2.1.296. Si una versión nueva de Claude Code cambia el formato, la barra no se rompe: cae al nombre del modelo.
+⚠️ **Honestidad:** el payload se validó en la 2.1.296. Si una versión nueva de Claude Code cambia el formato, la barra no se rompe: cae al nombre del modelo. Los umbrales de color (50 % y 80 %) y el margen del ritmo (5 puntos) son decisiones de diseño, no algo medido.
 
 ---
 
@@ -102,6 +117,7 @@ Esta barra se ejecuta en cada refresco de tu terminal, así que el código tiene
 - **Cero red.** No importa ningún módulo de red (`urllib.parse` solo parsea texto).
 - **Cero credenciales.** Nunca abre `~/.claude/.credentials.json` ni toca tu token.
 - **Cero procesos.** No lanza subprocesos ni ejecuta comandos.
+- **Escribe en un solo lugar:** `~/.cache/barra-de-uso/`.
 - **Solo biblioteca estándar.** Sin dependencias que auditar.
 - **Nunca rompe tu terminal.** Ante cualquier error imprime el nombre del modelo y sale con código 0; jamás un traceback.
 
@@ -110,15 +126,17 @@ Esta barra se ejecuta en cada refresco de tu terminal, así que el código tiene
 ## 🧭 Qué hace y qué NO hace
 
 **Hace**
-- Uso del plan de 5 h y semanal, con reset en hora de Chile.
+- Uso del plan de 5 h y semanal, con ritmo, colores por nivel y reset en hora de Chile.
+- Contexto usado de la sesión.
+- Último dato conocido al abrir una sesión, marcado con `~`.
 - Tokens por modelo (principal y subagentes) separados en entrada, lectura de caché, escritura de caché y salida.
 - Elige el modo solo, según tu `ANTHROPIC_BASE_URL`.
 
 **No hace**
 - ❌ **No calcula costos.** Te da los tokens; tú pones la tarifa.
 - ❌ **No muestra el uso semanal por modelo** (Opus, Sonnet) ni el uso extra pagado.
-- ❌ **No predice** si te alcanza el plan hasta el reset.
-- ❌ **No tiene colores configurables ni temas.** Los colores de la imagen de arriba son decorativos; la barra real imprime texto plano.
+- ❌ **No predice a qué hora te quedarás sin plan.** El ritmo solo compara contra el tiempo transcurrido.
+- ❌ **No tiene temas ni colores configurables.** Si no los quieres, pon `"command": "NO_COLOR=1 python3 /ruta/a/barra-de-uso/barra.py"`.
 - ❌ **La hora de reset siempre sale en `America/Santiago`.** No es configurable.
 - ❌ **Una sesión reanudada puede contar dos veces** la historia que copió de otra sesión.
 - ❌ **No sabe qué es un "alias".** Muestra el nombre del modelo tal como lo registra el transcript (por ejemplo `glm-fast`), que puede no ser el nombre comercial.
@@ -143,18 +161,22 @@ barra-de-uso/
 ├── barra_de_uso/
 │   ├── entrada.py            # JSON de stdin a Payload, tolerante a campos faltantes
 │   ├── modo.py               # plan u otro proveedor
-│   ├── plan.py               # línea del modo plan, reset en hora de Chile
+│   ├── plan.py               # línea del modo plan: contexto, ritmo, reset en hora de Chile
+│   ├── memoria.py            # último uso del plan conocido entre sesiones
+│   ├── color.py              # códigos ANSI y colores por nivel
 │   ├── transcripts.py        # lectura incremental, dedupe por message.id, totales por modelo
 │   ├── cache.py              # estado por sesión con escritura atómica
 │   ├── formato.py            # abreviación (k, M) y tabla alineada
 │   └── principal.py          # orquestación y red de seguridad
 ├── tests/                    # un archivo por módulo, más pruebas de punta a punta
 └── docs/
-    ├── assets/               # la imagen de arriba, generada con el propio código
+    ├── assets/               # la imagen de arriba y generar_imagen.py, que la produce desde la salida real
     └── superpowers/          # spec de diseño y plan de implementación
 ```
 
-La única configuración es una variable de entorno opcional: `BARRA_DE_USO_CACHE_DIR` cambia dónde se guarda la caché.
+Configuración, ambas opcionales: `BARRA_DE_USO_CACHE_DIR` cambia dónde se guarda la caché y `NO_COLOR=1` apaga los colores.
+
+Para regenerar la imagen después de cambiar el formato: `python3 docs/assets/generar_imagen.py`.
 
 ---
 
@@ -177,7 +199,7 @@ El comportamiento de `rate_limits` se contrastó con [`pcvelz/ccstatusline-usage
 
 **barra-de-uso** is a zero-dependency, zero-network Python status line for Claude Code.
 
-- **Plan mode** (`ANTHROPIC_BASE_URL` unset or `api.anthropic.com`): 5-hour and weekly usage from the `rate_limits` field Claude Code already passes on stdin, with reset times shown in `America/Santiago`.
+- **Plan mode** (`ANTHROPIC_BASE_URL` unset or `api.anthropic.com`): context usage plus 5-hour and weekly usage from the `rate_limits` field Claude Code already passes on stdin, with a pace arrow (▲ burning faster than time, ▼ ahead, = on pace), color by level, reset times in `America/Santiago`, and the last known value (`~`) while a new session has no data yet.
 - **Other-provider mode** (DeepSeek, Kimi, GLM, a local gateway...): one row per model, subagents included, with input, cache-read, cache-write and output tokens kept separate so you can apply each provider's own prices.
 - It never reads your credentials, never opens a socket, and on any error prints the model name and exits 0.
 

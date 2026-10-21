@@ -1,64 +1,76 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="820" height="372" viewBox="0 0 820 372" role="img" aria-labelledby="t d">
+<svg xmlns="http://www.w3.org/2000/svg" width="820" height="430" viewBox="0 0 820 430" role="img" aria-labelledby="t d">
   <title id="t">barra-de-uso</title>
-  <desc id="d">Dos ejemplos de la barra: en modo plan muestra el uso de 5 horas y semanal con su reset, y en otro proveedor muestra los tokens por modelo.</desc>
-  <rect x="1" y="1" width="818" height="370" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
+  <desc id="d">La barra en modo plan, con contexto, ritmo y último dato conocido, y en otro proveedor, con tokens por modelo.</desc>
+  <rect x="1" y="1" width="818" height="428" rx="14" fill="#0d1117" stroke="#30363d" stroke-width="2"/>
   <circle cx="30" cy="28" r="6" fill="#ff5f56"/><circle cx="52" cy="28" r="6" fill="#ffbd2e"/><circle cx="74" cy="28" r="6" fill="#27c93f"/>
   <text x="410" y="33" text-anchor="middle" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" font-size="13" fill="#6e7681">barra-de-uso</text>
   <line x1="1" y1="50" x2="819" y2="50" stroke="#30363d"/>
-
   <g font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, 'DejaVu Sans Mono', monospace" xml:space="preserve">
-    <text x="36" y="86" font-size="12" fill="#6e7681" textLength="331.2" lengthAdjust="spacingAndGlyphs">MODO PLAN  ·  claude con tu login de Anthropic</text>
+    <text x="36.0" y="86" font-size="12" fill="#6e7681" textLength="331.2" lengthAdjust="spacingAndGlyphs">MODO PLAN  ·  claude con tu login de Anthropic</text>
     <text x="36.0" y="122" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">❯</text>
-    <text x="54.0" y="122" font-size="15" fill="#c9d1d9" font-weight="700" textLength="72.0" lengthAdjust="spacingAndGlyphs">Opus 5.5</text>
+    <text x="54.0" y="122" font-size="15" fill="#c9d1d9" textLength="72.0" lengthAdjust="spacingAndGlyphs">Opus 5.5</text>
     <text x="135.0" y="122" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
-    <text x="153.0" y="122" font-size="15" fill="#6e7681" textLength="18.0" lengthAdjust="spacingAndGlyphs">5h</text>
-    <text x="180.0" y="122" font-size="15" fill="#e3b341" font-weight="700" textLength="27.0" lengthAdjust="spacingAndGlyphs">42%</text>
-    <text x="216.0" y="122" font-size="15" fill="#39c5cf" textLength="9.0" lengthAdjust="spacingAndGlyphs">↻</text>
-    <text x="234.0" y="122" font-size="15" fill="#c9d1d9" textLength="45.0" lengthAdjust="spacingAndGlyphs">16:30</text>
-    <text x="288.0" y="122" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
-    <text x="306.0" y="122" font-size="15" fill="#6e7681" textLength="27.0" lengthAdjust="spacingAndGlyphs">sem</text>
-    <text x="342.0" y="122" font-size="15" fill="#e3b341" font-weight="700" textLength="27.0" lengthAdjust="spacingAndGlyphs">18%</text>
-    <text x="378.0" y="122" font-size="15" fill="#39c5cf" textLength="9.0" lengthAdjust="spacingAndGlyphs">↻</text>
-    <text x="396.0" y="122" font-size="15" fill="#c9d1d9" textLength="81.0" lengthAdjust="spacingAndGlyphs">mar 04:00</text>
-
-    <line x1="36" y1="152" x2="784" y2="152" stroke="#30363d" stroke-dasharray="4 6"/>
-
-    <text x="36" y="190" font-size="12" fill="#6e7681" textLength="432.0" lengthAdjust="spacingAndGlyphs">OTRO PROVEEDOR  ·  ds_mode, kimi_mode, glm_51, multi_mode...</text>
-    <text x="36.0" y="226" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">❯</text>
-    <text x="54.0" y="226" font-size="15" fill="#7ee787" font-weight="700" textLength="63.0" lengthAdjust="spacingAndGlyphs">kimi-k3</text>
-    <text x="144.0" y="226" font-size="15" fill="#58a6ff" textLength="18.0" lengthAdjust="spacingAndGlyphs">in</text>
-    <text x="171.0" y="226" font-size="15" fill="#c9d1d9" textLength="45.0" lengthAdjust="spacingAndGlyphs">12.4k</text>
-    <text x="225.0" y="226" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
-    <text x="243.0" y="226" font-size="15" fill="#7ee787" textLength="18.0" lengthAdjust="spacingAndGlyphs">cr</text>
-    <text x="270.0" y="226" font-size="15" fill="#c9d1d9" textLength="54.0" lengthAdjust="spacingAndGlyphs">340.1k</text>
-    <text x="333.0" y="226" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
-    <text x="351.0" y="226" font-size="15" fill="#d2a8ff" textLength="18.0" lengthAdjust="spacingAndGlyphs">cw</text>
-    <text x="378.0" y="226" font-size="15" fill="#c9d1d9" textLength="9.0" lengthAdjust="spacingAndGlyphs">0</text>
-    <text x="396.0" y="226" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
-    <text x="414.0" y="226" font-size="15" fill="#ffa657" textLength="27.0" lengthAdjust="spacingAndGlyphs">out</text>
-    <text x="450.0" y="226" font-size="15" fill="#c9d1d9" textLength="36.0" lengthAdjust="spacingAndGlyphs">8.2k</text>
-    <text x="36.0" y="254" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">❯</text>
-    <text x="54.0" y="254" font-size="15" fill="#7ee787" font-weight="700" textLength="72.0" lengthAdjust="spacingAndGlyphs">glm-fast</text>
-    <text x="144.0" y="254" font-size="15" fill="#58a6ff" textLength="18.0" lengthAdjust="spacingAndGlyphs">in</text>
-    <text x="171.0" y="254" font-size="15" fill="#c9d1d9" textLength="36.0" lengthAdjust="spacingAndGlyphs">4.1k</text>
-    <text x="225.0" y="254" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
-    <text x="243.0" y="254" font-size="15" fill="#7ee787" textLength="18.0" lengthAdjust="spacingAndGlyphs">cr</text>
-    <text x="270.0" y="254" font-size="15" fill="#c9d1d9" textLength="45.0" lengthAdjust="spacingAndGlyphs">90.3k</text>
-    <text x="333.0" y="254" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
-    <text x="351.0" y="254" font-size="15" fill="#d2a8ff" textLength="18.0" lengthAdjust="spacingAndGlyphs">cw</text>
-    <text x="378.0" y="254" font-size="15" fill="#c9d1d9" textLength="9.0" lengthAdjust="spacingAndGlyphs">0</text>
-    <text x="396.0" y="254" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
-    <text x="414.0" y="254" font-size="15" fill="#ffa657" textLength="27.0" lengthAdjust="spacingAndGlyphs">out</text>
-    <text x="450.0" y="254" font-size="15" fill="#c9d1d9" textLength="36.0" lengthAdjust="spacingAndGlyphs">3.0k</text>
-
-    <text x="36" y="304" font-size="12" fill="#6e7681" textLength="302.4" lengthAdjust="spacingAndGlyphs">Una fila por modelo, subagentes incluidos:</text>
-    <text x="36.0" y="328" font-size="12.5" fill="#58a6ff" textLength="15.0" lengthAdjust="spacingAndGlyphs">in</text>
-    <text x="58.5" y="328" font-size="12.5" fill="#6e7681" textLength="52.5" lengthAdjust="spacingAndGlyphs">entrada</text>
-    <text x="133.5" y="328" font-size="12.5" fill="#7ee787" textLength="15.0" lengthAdjust="spacingAndGlyphs">cr</text>
-    <text x="156.0" y="328" font-size="12.5" fill="#6e7681" textLength="120.0" lengthAdjust="spacingAndGlyphs">lectura de caché</text>
-    <text x="298.5" y="328" font-size="12.5" fill="#d2a8ff" textLength="15.0" lengthAdjust="spacingAndGlyphs">cw</text>
-    <text x="321.0" y="328" font-size="12.5" fill="#6e7681" textLength="135.0" lengthAdjust="spacingAndGlyphs">escritura de caché</text>
-    <text x="478.5" y="328" font-size="12.5" fill="#ffa657" textLength="22.5" lengthAdjust="spacingAndGlyphs">out</text>
-    <text x="508.5" y="328" font-size="12.5" fill="#6e7681" textLength="45.0" lengthAdjust="spacingAndGlyphs">salida</text>
+    <text x="153.0" y="122" font-size="15" fill="#c9d1d9" textLength="27.0" lengthAdjust="spacingAndGlyphs">ctx</text>
+    <text x="189.0" y="122" font-size="15" fill="#7ee787" textLength="27.0" lengthAdjust="spacingAndGlyphs">11%</text>
+    <text x="225.0" y="122" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
+    <text x="243.0" y="122" font-size="15" fill="#c9d1d9" textLength="18.0" lengthAdjust="spacingAndGlyphs">5h</text>
+    <text x="270.0" y="122" font-size="15" fill="#7ee787" textLength="27.0" lengthAdjust="spacingAndGlyphs">42%</text>
+    <text x="306.0" y="122" font-size="15" fill="#ff7b72" textLength="9.0" lengthAdjust="spacingAndGlyphs">▲</text>
+    <text x="324.0" y="122" font-size="15" fill="#c9d1d9" textLength="63.0" lengthAdjust="spacingAndGlyphs">↻ 16:30</text>
+    <text x="396.0" y="122" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
+    <text x="414.0" y="122" font-size="15" fill="#c9d1d9" textLength="27.0" lengthAdjust="spacingAndGlyphs">sem</text>
+    <text x="450.0" y="122" font-size="15" fill="#7ee787" textLength="27.0" lengthAdjust="spacingAndGlyphs">18%</text>
+    <text x="486.0" y="122" font-size="15" fill="#c9d1d9" textLength="117.0" lengthAdjust="spacingAndGlyphs">= ↻ mar 04:00</text>
+    <text x="36.0" y="150" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">❯</text>
+    <text x="54.0" y="150" font-size="15" fill="#c9d1d9" textLength="72.0" lengthAdjust="spacingAndGlyphs">Opus 5.5</text>
+    <text x="135.0" y="150" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
+    <text x="153.0" y="150" font-size="15" fill="#6e7681" textLength="135.0" lengthAdjust="spacingAndGlyphs">5h ~42% ↻ 16:30</text>
+    <text x="297.0" y="150" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
+    <text x="315.0" y="150" font-size="15" fill="#6e7681" textLength="180.0" lengthAdjust="spacingAndGlyphs">sem ~18% ↻ mar 04:00</text>
+    <text x="36.0" y="178" font-size="12.5" fill="#ff7b72" textLength="7.5" lengthAdjust="spacingAndGlyphs">▲</text>
+    <text x="51.0" y="178" font-size="12.5" fill="#6e7681" textLength="180.0" lengthAdjust="spacingAndGlyphs">más rápido que el tiempo</text>
+    <text x="253.5" y="178" font-size="12.5" fill="#7ee787" textLength="7.5" lengthAdjust="spacingAndGlyphs">▼</text>
+    <text x="268.5" y="178" font-size="12.5" fill="#6e7681" textLength="52.5" lengthAdjust="spacingAndGlyphs">holgado</text>
+    <text x="343.5" y="178" font-size="12.5" fill="#c9d1d9" textLength="7.5" lengthAdjust="spacingAndGlyphs">=</text>
+    <text x="358.5" y="178" font-size="12.5" fill="#6e7681" textLength="60.0" lengthAdjust="spacingAndGlyphs">al ritmo</text>
+    <text x="441.0" y="178" font-size="12.5" fill="#c9d1d9" textLength="7.5" lengthAdjust="spacingAndGlyphs">~</text>
+    <text x="456.0" y="178" font-size="12.5" fill="#6e7681" textLength="150.0" lengthAdjust="spacingAndGlyphs">último dato conocido</text>
+    <line x1="36" y1="206" x2="784" y2="206" stroke="#30363d" stroke-dasharray="4 6"/>
+    <text x="36.0" y="244" font-size="12" fill="#6e7681" textLength="432.0" lengthAdjust="spacingAndGlyphs">OTRO PROVEEDOR  ·  ds_mode, kimi_mode, glm_51, multi_mode...</text>
+    <text x="36.0" y="280" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">❯</text>
+    <text x="54.0" y="280" font-size="15" fill="#c9d1d9" font-weight="700" textLength="63.0" lengthAdjust="spacingAndGlyphs">kimi-k3</text>
+    <text x="144.0" y="280" font-size="15" fill="#58a6ff" textLength="18.0" lengthAdjust="spacingAndGlyphs">in</text>
+    <text x="171.0" y="280" font-size="15" fill="#c9d1d9" textLength="45.0" lengthAdjust="spacingAndGlyphs">12.4k</text>
+    <text x="225.0" y="280" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
+    <text x="243.0" y="280" font-size="15" fill="#7ee787" textLength="18.0" lengthAdjust="spacingAndGlyphs">cr</text>
+    <text x="270.0" y="280" font-size="15" fill="#c9d1d9" textLength="54.0" lengthAdjust="spacingAndGlyphs">340.1k</text>
+    <text x="333.0" y="280" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
+    <text x="351.0" y="280" font-size="15" fill="#d2a8ff" textLength="18.0" lengthAdjust="spacingAndGlyphs">cw</text>
+    <text x="378.0" y="280" font-size="15" fill="#c9d1d9" textLength="9.0" lengthAdjust="spacingAndGlyphs">0</text>
+    <text x="396.0" y="280" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
+    <text x="414.0" y="280" font-size="15" fill="#e3b341" textLength="27.0" lengthAdjust="spacingAndGlyphs">out</text>
+    <text x="450.0" y="280" font-size="15" fill="#c9d1d9" textLength="36.0" lengthAdjust="spacingAndGlyphs">8.2k</text>
+    <text x="36.0" y="308" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">❯</text>
+    <text x="54.0" y="308" font-size="15" fill="#c9d1d9" font-weight="700" textLength="72.0" lengthAdjust="spacingAndGlyphs">glm-fast</text>
+    <text x="144.0" y="308" font-size="15" fill="#58a6ff" textLength="18.0" lengthAdjust="spacingAndGlyphs">in</text>
+    <text x="171.0" y="308" font-size="15" fill="#c9d1d9" textLength="36.0" lengthAdjust="spacingAndGlyphs">4.1k</text>
+    <text x="225.0" y="308" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
+    <text x="243.0" y="308" font-size="15" fill="#7ee787" textLength="18.0" lengthAdjust="spacingAndGlyphs">cr</text>
+    <text x="270.0" y="308" font-size="15" fill="#c9d1d9" textLength="45.0" lengthAdjust="spacingAndGlyphs">90.3k</text>
+    <text x="333.0" y="308" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
+    <text x="351.0" y="308" font-size="15" fill="#d2a8ff" textLength="18.0" lengthAdjust="spacingAndGlyphs">cw</text>
+    <text x="378.0" y="308" font-size="15" fill="#c9d1d9" textLength="9.0" lengthAdjust="spacingAndGlyphs">0</text>
+    <text x="396.0" y="308" font-size="15" fill="#6e7681" textLength="9.0" lengthAdjust="spacingAndGlyphs">·</text>
+    <text x="414.0" y="308" font-size="15" fill="#e3b341" textLength="27.0" lengthAdjust="spacingAndGlyphs">out</text>
+    <text x="450.0" y="308" font-size="15" fill="#c9d1d9" textLength="36.0" lengthAdjust="spacingAndGlyphs">3.0k</text>
+    <text x="36.0" y="358" font-size="12" fill="#6e7681" textLength="302.4" lengthAdjust="spacingAndGlyphs">Una fila por modelo, subagentes incluidos:</text>
+    <text x="36.0" y="382" font-size="12.5" fill="#58a6ff" textLength="15.0" lengthAdjust="spacingAndGlyphs">in</text>
+    <text x="58.5" y="382" font-size="12.5" fill="#6e7681" textLength="52.5" lengthAdjust="spacingAndGlyphs">entrada</text>
+    <text x="133.5" y="382" font-size="12.5" fill="#7ee787" textLength="15.0" lengthAdjust="spacingAndGlyphs">cr</text>
+    <text x="156.0" y="382" font-size="12.5" fill="#6e7681" textLength="120.0" lengthAdjust="spacingAndGlyphs">lectura de caché</text>
+    <text x="298.5" y="382" font-size="12.5" fill="#d2a8ff" textLength="15.0" lengthAdjust="spacingAndGlyphs">cw</text>
+    <text x="321.0" y="382" font-size="12.5" fill="#6e7681" textLength="135.0" lengthAdjust="spacingAndGlyphs">escritura de caché</text>
+    <text x="478.5" y="382" font-size="12.5" fill="#e3b341" textLength="22.5" lengthAdjust="spacingAndGlyphs">out</text>
+    <text x="508.5" y="382" font-size="12.5" fill="#6e7681" textLength="45.0" lengthAdjust="spacingAndGlyphs">salida</text>
   </g>
 </svg>
