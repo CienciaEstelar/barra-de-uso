@@ -8,6 +8,7 @@
 ![Dependencias](https://img.shields.io/badge/Dependencias-0-success?style=for-the-badge)
 ![Red](https://img.shields.io/badge/Red-ninguna-success?style=for-the-badge)
 ![Tests](https://img.shields.io/badge/Tests-65%20passing-brightgreen?style=for-the-badge)
+![Licencia](https://img.shields.io/badge/Licencia-MIT-green?style=for-the-badge)
 
 <img src="docs/assets/barra-de-uso.svg" alt="La barra en modo plan y en modo otro proveedor" width="760">
 
@@ -161,6 +162,10 @@ La única configuración es una variable de entorno opcional: `BARRA_DE_USO_CACH
 
 El comportamiento de `rate_limits` se contrastó con [`pcvelz/ccstatusline-usage`](https://github.com/pcvelz/ccstatusline-usage) (MIT, TypeScript), un fork de [`sirmalloc/ccstatusline`](https://github.com/sirmalloc/ccstatusline). **No se copió código.** Aquí la decisión fue distinta: leer solo lo que Claude Code ya entrega por stdin, sin tocar tu token OAuth ni llamar a ninguna API.
 
+## 📄 Licencia
+
+[MIT](LICENSE). Úsala, modifícala y compártela libremente; solo conserva el aviso de copyright.
+
 ## 👤 Autor
 
 **Juan Galaz** · [@CienciaEstelar](https://github.com/CienciaEstelar) · [cienciaestelar.cl](https://cienciaestelar.cl)
@@ -176,6 +181,6 @@ El comportamiento de `rate_limits` se contrastó con [`pcvelz/ccstatusline-usage
 - **Other-provider mode** (DeepSeek, Kimi, GLM, a local gateway...): one row per model, subagents included, with input, cache-read, cache-write and output tokens kept separate so you can apply each provider's own prices.
 - It never reads your credentials, never opens a socket, and on any error prints the model name and exits 0.
 
-Install: clone the repo and set `statusLine.command` to `python3 /path/to/barra-de-uso/barra.py` in `~/.claude/settings.json`. Requires Python 3.12+. Tests: `python3 -m pytest -q`.
+Install: clone the repo and set `statusLine.command` to `python3 /path/to/barra-de-uso/barra.py` in `~/.claude/settings.json`. Requires Python 3.12+. Tests: `python3 -m pytest -q`. License: MIT.
 
 </details>
