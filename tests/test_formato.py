@@ -1,6 +1,7 @@
 import pytest
 
 from barra_de_uso.formato import abreviar, tabla_tokens
+from tests.conftest import sin_ansi
 
 
 @pytest.mark.parametrize("n, esperado", [
@@ -41,3 +42,15 @@ def test_tabla_empate_ordena_alfabetico():
         "a-modelo": {"in": 1, "cr": 0, "cw": 0, "out": 0},
     }
     assert [linea.split()[0] for linea in tabla_tokens(totales)] == ["a-modelo", "b-modelo"]
+
+
+def test_tabla_con_colores_alinea_igual_que_sin_colores():
+    totales = {
+        "glm-fast": {"in": 4_100, "cr": 90_300, "cw": 0, "out": 3_000},
+        "kimi-k3": {"in": 12_400, "cr": 340_100, "cw": 0, "out": 8_200},
+    }
+    coloreadas = tabla_tokens(totales, colores=True)
+    assert [sin_ansi(linea) for linea in coloreadas] == tabla_tokens(totales)
+    assert coloreadas[0].startswith("\x1b[1mkimi-k3\x1b[0m   ")  # nombre en negrita, relleno fuera del color
+    assert "\x1b[34min\x1b[0m 12.4k" in coloreadas[0]
+    assert "\x1b[33mout\x1b[0m 8.2k" in coloreadas[0]
