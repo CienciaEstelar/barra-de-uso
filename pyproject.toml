@@ -1,0 +1,10 @@
+[project]
+name = "barra-de-uso"
+version = "0.1.0"
+description = "Status line para Claude Code: uso del plan y tokens por modelo"
+requires-python = ">=3.12"
+dependencies = []
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
