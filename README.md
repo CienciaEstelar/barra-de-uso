@@ -163,7 +163,7 @@ El comportamiento de `rate_limits` se contrastó con [`pcvelz/ccstatusline-usage
 
 ## 👤 Autor
 
-**Juan de Dios Galaz Amengual** · [@CienciaEstelar](https://github.com/CienciaEstelar) · [cienciaestelar.cl](https://cienciaestelar.cl)
+**Juan Galaz** · [@CienciaEstelar](https://github.com/CienciaEstelar) · [cienciaestelar.cl](https://cienciaestelar.cl)
 
 ---
 
