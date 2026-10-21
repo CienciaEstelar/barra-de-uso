@@ -1,6 +1,7 @@
 """Ayudantes para armar transcripts SINTÉTICOS. Nunca usar datos reales: el repo es público."""
 
 import json
+import re
 from pathlib import Path
 
 import pytest
@@ -36,6 +37,10 @@ def agregar_jsonl(ruta: Path, lineas) -> None:
     with ruta.open("a", encoding="utf-8") as archivo:
         for linea in lineas:
             archivo.write(json.dumps(linea) + "\n")
+
+
+def sin_ansi(texto: str) -> str:
+    return re.sub(r"\x1b\[[0-9;]*m", "", texto)
 
 
 @pytest.fixture
