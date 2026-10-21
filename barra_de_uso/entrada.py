@@ -11,10 +11,14 @@ NOMBRE_RESPALDO = "barra-de-uso"
 
 @dataclass(frozen=True)
 class Ventana:
-    """Una ventana de rate limit: porcentaje usado y momento del reset (epoch en segundos)."""
+    """Una ventana de rate limit: porcentaje usado y momento del reset (epoch en segundos).
+
+    `estimada` es True cuando el dato viene de la memoria y no del payload actual.
+    """
 
     porcentaje: float | None
     reset_epoch: float | None
+    estimada: bool = False
 
 
 @dataclass(frozen=True)
@@ -24,6 +28,7 @@ class Payload:
     transcript_path: str | None
     cinco_horas: Ventana | None
     semanal: Ventana | None
+    contexto: float | None = None
 
 
 def _numero(valor: object) -> float | None:
@@ -64,10 +69,13 @@ def parsear_payload(texto: str) -> Payload:
     info_modelo = _diccionario(datos.get("model"))
     modelo = _texto(info_modelo.get("display_name")) or _texto(info_modelo.get("id")) or NOMBRE_RESPALDO
     limites = _diccionario(datos.get("rate_limits"))
+    contexto = _diccionario(datos.get("context_window"))
     return Payload(
         modelo=modelo,
         session_id=_texto(datos.get("session_id")),
         transcript_path=_texto(datos.get("transcript_path")),
         cinco_horas=_ventana(limites.get("five_hour")),
         semanal=_ventana(limites.get("seven_day")),
+        # Viene null en el primer refresco, antes de la primera respuesta.
+        contexto=_numero(contexto.get("used_percentage")),
     )

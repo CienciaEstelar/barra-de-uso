@@ -60,3 +60,18 @@ def test_json_invalido_lanza_value_error():
 def test_json_que_no_es_objeto_lanza_value_error():
     with pytest.raises(ValueError):
         parsear_payload("[1, 2]")
+
+
+def test_contexto_se_lee_de_context_window():
+    texto = json.dumps({"context_window": {"used_percentage": 11, "context_window_size": 1000000}})
+    assert parsear_payload(texto).contexto == 11.0
+
+
+def test_contexto_null_en_el_primer_refresco():
+    assert parsear_payload('{"context_window": {"used_percentage": null}}').contexto is None
+    assert parsear_payload("{}").contexto is None
+
+
+def test_ventana_del_payload_nunca_es_estimada():
+    texto = json.dumps({"rate_limits": {"five_hour": {"used_percentage": 42, "resets_at": 1}}})
+    assert parsear_payload(texto).cinco_horas.estimada is False
